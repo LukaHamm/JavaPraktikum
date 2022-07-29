@@ -1,5 +1,8 @@
 package ziffernfolge;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 public class Steuerung {
 	private Spielkonsole spielkonsole;
 	// Zustaende
@@ -10,6 +13,7 @@ public class Steuerung {
 	private Anzeige_Bestenliste anzeige_Bestenliste = new Anzeige_Bestenliste();
 	public Eingabe_Name eingabe_Name = new Eingabe_Name();
 	public long startzeitInMs;
+	private BestenlisteDummy bestenlisteDummy;
 
 	// aktueller Zustand der Spielkonsole.
 	private Zustand zustand = start;
@@ -42,6 +46,22 @@ public class Steuerung {
 	 */
 	public void ziffer_ausgewaehlt(Ziffer ziffer) {
 		zustand.ziffer_ausgewaehlt(ziffer);
+	}
+	
+	/**
+	 * Ereignis. Teilt der Steuerung mit, dass ein neues Spiel gestartet werden
+	 * soll.
+	 */
+	public void neues_Spiel() {
+		zustand.neues_Spiel();
+	}
+
+	/**
+	 * Ereignis. Teilt der Steuerung mit, dass der Name eingegeben wurde. Es muss
+	 * als nächstes die Bestenliste angezeigt werden.
+	 */
+	public void name_eingegeben() {
+		zustand.name_eingegeben();
 	}
 
 	// abstrakte Zustandsklasse mit Standardverhalten
@@ -135,6 +155,11 @@ public class Steuerung {
 
 	private class Anzeige_Bestenliste extends Zustand {
 		@Override
+		public void entry() {
+			bestenlisteDummy.zeige_Liste_an();
+		}
+		
+		@Override
 		public void neues_Spiel() {
 			naechster_Zustand(praesentation_ziffernfolge);
 		}
@@ -143,6 +168,7 @@ public class Steuerung {
 		public void exit() {
 			spielkonsole.beginne_neue_Ziffernfolge();
 			spielkonsole.sichtbar(true);
+			bestenlisteDummy.sichtbar(false);
 		}
 
 	}
@@ -152,6 +178,7 @@ public class Steuerung {
 		@Override
 		public void entry() {
 			spielkonsole.sichtbar(false);
+			bestenlisteDummy.sichtbar(true);
 			
 		}
 
@@ -160,6 +187,10 @@ public class Steuerung {
 			naechster_Zustand(anzeige_Bestenliste);
 		}
 
+	}
+	
+	public void melde_An(BestenlisteDummy bestenliste) {
+		this.bestenlisteDummy = bestenliste;
 	}
 
 }

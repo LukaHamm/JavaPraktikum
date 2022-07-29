@@ -12,6 +12,7 @@ public class Benutzeroberflaeche extends JFrame
   private JPanel contentPane;
   private Spielkonsole spielkonsole=new Spielkonsole();
   private Steuerung steuerung=new Steuerung(spielkonsole);
+  private BestenlisteDummy bestenlisteDummy = new BestenlisteDummy(steuerung);
   
   /**
    * Launch the application.
@@ -52,6 +53,11 @@ public class Benutzeroberflaeche extends JFrame
 
     spielkonsole.melde_an(steuerung);
     spielkonsole.setLocation(abstand,abstand);
+    steuerung.melde_An(bestenlisteDummy);
     contentPane.add(spielkonsole);
+    bestenlisteDummy.setSize(500, 500);
+    bestenlisteDummy.setVisible(false);
+    bestenlisteDummy.setLocation(abstand, abstand);
+    contentPane.add(bestenlisteDummy);
   }
 }
