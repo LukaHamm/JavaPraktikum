@@ -1,3 +1,9 @@
+/**
+Projekt: Ziffernreihen Spiel 
+File: Steuerung.java
+Author: Lukas Hammer
+Last changed: 16.09.2022
+**/
 package ziffernfolge;
 
 import javax.swing.JFrame;
@@ -13,7 +19,7 @@ public class Steuerung {
 	private Anzeige_Bestenliste anzeige_Bestenliste = new Anzeige_Bestenliste();
 	public Eingabe_Name eingabe_Name = new Eingabe_Name();
 	public long startzeitInMs;
-	private BestenlisteDummy bestenlisteDummy;
+	private Bestenliste bestenliste;
 
 	// aktueller Zustand der Spielkonsole.
 	private Zustand zustand = start;
@@ -156,7 +162,7 @@ public class Steuerung {
 	private class Anzeige_Bestenliste extends Zustand {
 		@Override
 		public void entry() {
-			bestenlisteDummy.zeige_Liste_an();
+			bestenliste.zeige_Liste_an();
 		}
 		
 		@Override
@@ -168,7 +174,7 @@ public class Steuerung {
 		public void exit() {
 			spielkonsole.beginne_neue_Ziffernfolge();
 			spielkonsole.sichtbar(true);
-			bestenlisteDummy.sichtbar(false);
+			bestenliste.sichtbar(false);
 		}
 
 	}
@@ -178,7 +184,9 @@ public class Steuerung {
 		@Override
 		public void entry() {
 			spielkonsole.sichtbar(false);
-			bestenlisteDummy.sichtbar(true);
+			bestenliste.neues_Ergebnis(spielkonsole.laenge_Ziffernfolge(), spielkonsole.spielzeit());
+			bestenliste.sichtbar(true);
+			bestenliste.aktiviere_Namenseingabe();
 			
 		}
 
@@ -189,8 +197,8 @@ public class Steuerung {
 
 	}
 	
-	public void melde_An(BestenlisteDummy bestenliste) {
-		this.bestenlisteDummy = bestenliste;
+	public void melde_An(Bestenliste bestenliste) {
+		this.bestenliste = bestenliste;
 	}
 
 }

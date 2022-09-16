@@ -1,3 +1,9 @@
+/**
+Projekt: Ziffernreihen Spiel 
+File: LinKongruenzTest.java
+Author: Lukas Hammer
+Last changed: 16.06.2022
+**/
 package ziffernfolge;
 
 import static org.junit.jupiter.api.Assertions.*;

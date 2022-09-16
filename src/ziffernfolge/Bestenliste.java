@@ -1,3 +1,9 @@
+/**
+Projekt: Ziffernreihen Spiel 
+File: Bestenliste.java
+Author: Lukas Hammer
+Last changed: 16.09.2022
+**/
 package ziffernfolge;
 
 import java.awt.Button;
@@ -22,7 +28,7 @@ import javax.swing.JTextArea;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 
-public class BestenlisteDummy extends JPanel {
+public class Bestenliste extends JPanel {
 	private JTextField textField;
 	private Steuerung steuerung;
 	private JPanel bestenlistePanel;
@@ -30,7 +36,7 @@ public class BestenlisteDummy extends JPanel {
 	private String name;
 	private TextArea textArea;
 
-	public BestenlisteDummy(Steuerung steuerung) {
+	public Bestenliste(Steuerung steuerung) {
 		this.steuerung = steuerung;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
@@ -101,6 +107,14 @@ public class BestenlisteDummy extends JPanel {
 		this.bestenlistePanel.setVisible(true);
 		textArea.setText(name);
 
+	}
+	
+	public void neues_Ergebnis(int folgenlaenge, int spielzeit) {
+		
+	}
+	
+	public void aktiviere_Namenseingabe() {
+		this.textArea.setText("");
 	}
 
 	public void sichtbar(boolean isSichtbar) {

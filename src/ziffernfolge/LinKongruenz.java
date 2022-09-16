@@ -1,3 +1,9 @@
+/**
+Projekt: Ziffernreihen Spiel 
+File: LinKongruenz.java
+Author: Lukas Hammer
+Last changed: 16.06.2022
+**/
 package ziffernfolge;
 
 import java.util.concurrent.TimeUnit;

@@ -1,3 +1,10 @@
+/**
+Projekt: Ziffernreihen Spiel 
+File: Benutzeroberfläche.java
+Author: Lukas Hammer
+Last changed: 13.08.2022
+**/
+
 package ziffernfolge;
 
 import java.awt.EventQueue;
@@ -12,7 +19,7 @@ public class Benutzeroberflaeche extends JFrame
   private JPanel contentPane;
   private Spielkonsole spielkonsole=new Spielkonsole();
   private Steuerung steuerung=new Steuerung(spielkonsole);
-  private BestenlisteDummy bestenlisteDummy = new BestenlisteDummy(steuerung);
+  private Bestenliste bestenlisteDummy = new Bestenliste(steuerung);
   
   /**
    * Launch the application.
