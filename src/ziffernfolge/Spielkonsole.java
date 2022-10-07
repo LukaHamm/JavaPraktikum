@@ -84,6 +84,7 @@ public class Spielkonsole extends JPanel
 	  for(Liste.Iterator k = ziffernfolge.erzeuge_Iterator();!k.nach_ende();k.weiter()) {
 		  ++laengeZiffernfolge;
 	  }
+	  --laengeZiffernfolge;
 	  return laengeZiffernfolge;
   }
   
