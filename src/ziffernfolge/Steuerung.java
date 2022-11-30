@@ -35,7 +35,6 @@ public class Steuerung {
 
 	/** Ereignis. Teilt der Steuerung mit, dass das Spiel gestartet worden ist. */
 	public void spiel_gestartet() {
-		this.startzeitInMs = System.currentTimeMillis();
 		zustand.spiel_gestartet();
 	}
 
@@ -168,6 +167,7 @@ public class Steuerung {
 		
 		@Override
 		public void neues_Spiel() {
+			startzeitInMs = System.currentTimeMillis();
 			naechster_Zustand(praesentation_ziffernfolge);
 		}
 
