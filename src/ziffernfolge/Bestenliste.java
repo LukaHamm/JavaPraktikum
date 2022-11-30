@@ -30,6 +30,8 @@ import javax.swing.Action;
 
 public class Bestenliste extends JPanel {
 	private JTextField textField;
+	private int spielzeit;
+	private int folgenlaenge;
 	private Steuerung steuerung;
 	private JPanel bestenlistePanel;
 	private JPanel nameEingabePanel;
@@ -105,12 +107,13 @@ public class Bestenliste extends JPanel {
 	public void zeige_Liste_an() {
 		this.nameEingabePanel.setVisible(false);
 		this.bestenlistePanel.setVisible(true);
-		textArea.setText(name);
+		textArea.setText(name + " Zeit: " + spielzeit + " Folgenlaenge: " + folgenlaenge);
 
 	}
 	
 	public void neues_Ergebnis(int folgenlaenge, int spielzeit) {
-		
+		this.spielzeit = spielzeit;
+		this.folgenlaenge = folgenlaenge;
 	}
 	
 	public void aktiviere_Namenseingabe() {
