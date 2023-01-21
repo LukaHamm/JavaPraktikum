@@ -2,7 +2,7 @@
 Projekt: Ziffernreihen Spiel 
 File: Spielekonsole.java
 Author: Lukas Hammer
-Last changed: 16.06.2022
+Last changed: 21.01.2023
 **/
 package ziffernfolge;
 import java.awt.Color;
@@ -94,7 +94,7 @@ public class Spielkonsole extends JPanel
       nacheinander  blau aufleuchten. Ist die Praesentation beendet, wird der
       Steuerung mitgeteilt, dass dieses Ereignis eingetreten ist.*/
   public void starte_Praesentation_Ziffernfolge()
-  { int ziffer=zufallszahlen.naechste(1, 10);
+  { int ziffer=zufallszahlen.naechste(1, 9);
     ziffernfolge.setze_an_Ende(ziffer);
     iterator_ziffernfolge.anfang();
     Thread t=new PraesentationsThread(this);

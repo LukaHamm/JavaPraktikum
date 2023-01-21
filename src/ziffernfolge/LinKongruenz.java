@@ -14,7 +14,7 @@ public class LinKongruenz implements Zufallszahl {
 	private final static int m1 = 10000;
 	private final static int b = 31415821;
 	private int vorigeZahl;
-	private int standardZahlenweite = 100;
+	private int standardZahlenweite = 101;
 	private int standardVon = 0;
 
 	/**
@@ -45,7 +45,7 @@ public class LinKongruenz implements Zufallszahl {
 		von = von< 0?0:von;
 		int groessereZahl = Math.max(von, bis);
 		standardVon = Math.min(von, bis);
-		standardZahlenweite = (groessereZahl-standardVon) == 0?standardZahlenweite:groessereZahl-standardVon;
+		standardZahlenweite = (groessereZahl-standardVon) == 0?standardZahlenweite:groessereZahl-standardVon+1;
 		if((groessereZahl - standardVon)== 0) {
 			standardVon = 0;
 		}
@@ -67,7 +67,7 @@ public class LinKongruenz implements Zufallszahl {
 		von = von< 0?0:von;
 		int groessereZahl = Math.max(von, bis);
 		int kleinereZahl = Math.min(von, bis);
-		int zahlenWeite = (groessereZahl - kleinereZahl) == 0 ?standardZahlenweite:groessereZahl - kleinereZahl;
+		int zahlenWeite = (groessereZahl - kleinereZahl) == 0 ?standardZahlenweite:groessereZahl - kleinereZahl+1;
 		if((groessereZahl - kleinereZahl)== 0) {
 			kleinereZahl = 0;
 		}
@@ -76,21 +76,7 @@ public class LinKongruenz implements Zufallszahl {
 		return zufallszahl;
 	}
 
-	public int getStandardZahlenweite() {
-		return standardZahlenweite;
-	}
-
-	public void setStandardZahlenweite(int standardZahlenweite) {
-		this.standardZahlenweite = standardZahlenweite;
-	}
-
-	public int getStandardVon() {
-		return standardVon;
-	}
-
-	public void setStandardVon(int standardVon) {
-		this.standardVon = standardVon;
-	}
+	
 	
 	
 	
