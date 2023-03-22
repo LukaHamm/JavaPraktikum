@@ -8,6 +8,9 @@ package ziffernfolge;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -119,7 +122,6 @@ class LinkongruenzTest {
 		for(int i = 0; i<100;i++) 
 		{
 			int zufallszahl = zufallsGeneratorKonstruktorMitParameter.naechste();
-			System.out.println(zufallszahl);
 			assertTrue(zufallszahl >=von);
 			assertTrue(zufallszahl <=bis);
 		}
@@ -128,24 +130,36 @@ class LinkongruenzTest {
 	@Test
 	@Order(6)
 	void testGleichVerteilung() {
-		int von=1;
-		int bis=2;
+		int von=3;
+		int bis=33;
+		HashMap<Integer, Integer> zaehlerMap = new HashMap<>();
 		int zaehler1 = 0;
 		int zaehler2 = 0;
 		zufallsGeneratorKonstruktorMitParameter = new LinKongruenz(von, bis);
-		for(int i = 0; i<100;i++) 
+		for(int i = 0; i<100000;i++) 
 		{
 			int zufallszahl = zufallsGeneratorKonstruktorMitParameter.naechste();
-			if(zufallszahl == 1) {
-				zaehler1++;
+			Integer zufallsZahlZaehler = zaehlerMap.get(zufallszahl);
+			if(zufallsZahlZaehler == null) {
+				zaehlerMap.put(zufallszahl, 1);
+			}else {
+				++zufallsZahlZaehler;
+				zaehlerMap.put(zufallszahl, zufallsZahlZaehler);
 			}
-			if(zufallszahl == 2) {
-				zaehler2++;
-			}
+			
 		}
-		double wkeitZahl1 = zaehler1/100;
-		double wkeitZahl2 = zaehler2/100;
-		assertTrue(wkeitZahl1 == wkeitZahl2);
+		int durchschnittsanzahl = 100000/30;
+		System.out.println("Anzahl der einzelnen Zahlen:");
+		for(Entry<Integer,Integer> entry: zaehlerMap.entrySet()) {
+			System.out.println("Zahl: " + entry.getKey() + " Wert: "+ entry.getValue()); 
+			double quotient = (double) entry.getValue()/durchschnittsanzahl;
+			double abweichung = Math.abs( 1.0d - quotient);
+			System.out.println(abweichung);
+			assertTrue(abweichung <= 0.1);
+		}
+		System.out.println();
+		System.out.println("Durchschnitt: " + durchschnittsanzahl);
+	
 	}
 	
 	
